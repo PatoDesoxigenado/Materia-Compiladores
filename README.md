@@ -2,10 +2,8 @@
 
 Repositório da Disciplina COMPILADORES E PARADIGMAS DE PROGRAMAÇÃO - UERN Semestre 2026.2
 
-
- ```
-
 ## Estrutura de Pastas
+ ```
 Matéria-Compiladores/
 ├── LICENSE
 ├── README.md
