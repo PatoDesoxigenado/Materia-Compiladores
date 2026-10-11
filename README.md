@@ -3,7 +3,7 @@
 Repositório da Disciplina COMPILADORES E PARADIGMAS DE PROGRAMAÇÃO - UERN Semestre 2026.2
 
 
-## 📂 Estrutura de Pastas
+## Estrutura de Pastas
 
 ```
 Matéria-Compiladores/
@@ -28,15 +28,15 @@ Matéria-Compiladores/
         └── 10_generics.go
 ```
 
-## 📁 Conteúdo das Pastas
+## Conteúdo das Pastas
 
 * **`exemplos-origem/`**: Contém 10 códigos-fonte escritos na linguagem de origem (Go), criados pela equipe para demonstrar os aspectos léxicos, sintáticos e semânticos da linguagem, cobrindo desde tipos básicos até concorrência nativa. Os arquivos estão organizados em subpastas por integrante responsável.
 
-## 👥 Divisão de Tarefas (10 Exemplos)
+## Divisão de Tarefas (10 Exemplos)
 
 Cada integrante do grupo ficou responsável por codificar, comentar e testar **2 exemplos distintos**, garantindo que não haja repetição de temas.
 
-### 1️⃣ Integrante: Alerrandro Martins
+### Integrante: Alerrandro Martins
 * **Exemplo 1: Tipos de Dados e Variáveis**
   * **Arquivo:** `01_tipos_variaveis.go`
   * **Tópicos:** Tipos primitivos, compostos (structs, slices, maps), escopo e *zero values*.
@@ -46,7 +46,7 @@ Cada integrante do grupo ficou responsável por codificar, comentar e testar **2
   * **Tópicos:** Goroutines e `sync.WaitGroup`.
   * **Ideia de Implementação:** Simular um "Disparador de E-mails em Massa", onde cada envio é feito paralelamente em uma goroutine, usando o WaitGroup para aguardar o fim de todos os envios antes de fechar o programa.
 
-### 2️⃣ Integrante: Thafine Jennifer
+### Integrante: Thafine Jennifer
 * **Exemplo 3: Ponteiros e Passagem de Parâmetros**
   * **Arquivo:** `03_ponteiros_referencias.go`
   * **Tópicos:** Passagem por valor vs. simulação de referência usando ponteiros explícitos (`*T` e `&x`).
@@ -56,7 +56,7 @@ Cada integrante do grupo ficou responsável por codificar, comentar e testar **2
   * **Tópicos:** Channels (comunicação segura), buffers e o comando `select`.
   * **Ideia de Implementação:** Um simulador de "Timeout de API", fazendo duas requisições fake em paralelo e usando o `select` para pegar a resposta da mais rápida ou disparar um erro de timeout se demorar muito.
 
-### 3️⃣ Integrante: Ana Kelry
+### Integrante: Ana Kelry
 * **Exemplo 5: Condicionais (If e Switch)**
   * **Arquivo:** `05_condicionais_switch.go`
   * **Tópicos:** `if` com inicialização curta, `switch` (sem break implícito) e `type switch`.
@@ -65,8 +65,8 @@ Cada integrante do grupo ficou responsável por codificar, comentar e testar **2
   * **Arquivo:** `06_tratamento_erros.go`
   * **Tópicos:** Interface `error`, formatação com `%w` e inspeção com `errors.Is` ou `errors.As`.
   * **Ideia de Implementação:** Um "Validador de Cadastro". Criar uma struct de erro customizada (`ErroValidacao`) que informa qual campo falhou e o motivo, testando o erro no fluxo principal.
-
-### 4️⃣ Integrante: Jean Vitor
+    
+### Integrante: Jean Vitor
 * **Exemplo 7: Repetições e Desvios (For e Defer)**
   * **Arquivo:** `07_loops_defer.go`
   * **Tópicos:** O único laço `for` do Go (clássico, condicional e range) e a cláusula `defer`.
@@ -76,7 +76,7 @@ Cada integrante do grupo ficou responsável por codificar, comentar e testar **2
   * **Tópicos:** Múltiplos retornos, retornos nomeados e parâmetros variádicos.
   * **Ideia de Implementação:** Uma função "Calculadora de Estatísticas" que recebe uma quantidade infinita de notas (variádico), e retorna três valores: o total, a média e um erro (caso nenhuma nota seja enviada).
 
-### 5️⃣ Integrante: Luiz Fernando
+### Integrante: Luiz Fernando
 * **Exemplo 9: Subprogramas Delegados (Closures e Lambdas)**
   * **Arquivo:** `09_closures_lambdas.go`
   * **Tópicos:** Funções como cidadãs de primeira classe e retenção de estado léxico (closures).
@@ -86,7 +86,7 @@ Cada integrante do grupo ficou responsável por codificar, comentar e testar **2
   * **Tópicos:** Uso de Type Parameters `[T any]` introduzidos no Go 1.18+.
   * **Ideia de Implementação:** Criar uma "Estrutura de Pilha (Stack) Genérica". A mesma estrutura deve ser capaz de empilhar e desempilhar valores `int`, `string` ou `structs`, demonstrando a reutilização de código sem sacrificar a tipagem estática.
 
-  ## 🤖 Uso de Ferramentas de IA Generativa
+  ##  Uso de Ferramentas de IA Generativa
 
 Durante o desenvolvimento dos códigos de exemplo desta pasta, os integrantes do grupo utilizaram ferramentas de Inteligência Artificial generativa (variando entre **Claude/Claude Code**, **Gemini** e **ChatGPT**) como apoio ao aprendizado.
 
