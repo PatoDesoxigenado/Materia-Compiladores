@@ -3,9 +3,34 @@
 Repositório da Disciplina COMPILADORES E PARADIGMAS DE PROGRAMAÇÃO - UERN Semestre 2026.2
 
 
+## 📂 Estrutura de Pastas
+
+```
+Matéria-Compiladores/
+├── LICENSE
+├── README.md
+└── exemplos-origem/
+    ├── README.md
+    ├── Alerrandro Martins/
+    │   ├── 01_tipos_variaveis.go
+    │   └── 02_goroutines_waitgroup.go
+    ├── Thafine Jennifer/
+    │   ├── 03_ponteiros_referencias.go
+    │   └── 04_canais_select.go
+    ├── Ana Kelry/
+    │   ├── 05_condicionais_switch.go
+    │   └── 06_tratamento_erros.go
+    ├── Jean Vitor/
+    │   ├── 07_loops_defer.go
+    │   └── 08_funcoes.go
+    └── Luiz Fernando/
+        ├── 09_closures_lambdas.go
+        └── 10_generics.go
+```
+
 ## 📁 Conteúdo das Pastas
 
-* **`exemplos_origem/`**: Contém 10 códigos-fonte escritos na linguagem de origem (Go), criados pela equipe para demonstrar os aspectos léxicos, sintáticos e semânticos da linguagem, cobrindo desde tipos básicos até concorrência nativa.
+* **`exemplos-origem/`**: Contém 10 códigos-fonte escritos na linguagem de origem (Go), criados pela equipe para demonstrar os aspectos léxicos, sintáticos e semânticos da linguagem, cobrindo desde tipos básicos até concorrência nativa. Os arquivos estão organizados em subpastas por integrante responsável.
 
 ## 👥 Divisão de Tarefas (10 Exemplos)
 
