@@ -3,7 +3,7 @@ Exemplo 4: Concorrência Avançada (Canais e Select)
 Arquivo: 04_canais_select.go
 Tópicos: Channels (comunicação segura), buffers e o comando select.
 Ideia de Implementação: Um simulador de "Timeout de API", fazendo duas requisições fake em paralelo e usando o
- select para pegar a resposta da mais rápida ou disparar um erro de timeout se demorar muito.
+select para pegar a resposta da mais rápida ou disparar um erro de timeout se demorar muito.
 
 ChatGPT foi ultilizado, na interface de conversação sem mais configurações, para gerar os cenários de exemplo.
 Código base criado para entendimento:
@@ -44,11 +44,12 @@ func main() {
 }
 
 Prompt enviado junto ao código: Elaborei o código acima como a implementação da ideia e dos requisitos abaixo,
- adapte o código criando exemplos relevantes como cenários para os possíveis casos (API de pagamentos primeiro,
- API de fretes primeiro, timeout e um exemplo que explique a difereça que buffer faz) em que essa implementação
- funciona e que façam sentido segundo os tópicos.
+adapte o código criando exemplos relevantes como cenários para os possíveis casos (API de pagamentos primeiro,
+API de fretes primeiro, timeout e um exemplo que explique a difereça que buffer faz) em que essa implementação
+funciona e que façam sentido segundo os tópicos.
 - Tópicos: Channels (comunicação segura), buffers e o comando select.
-- Contexto: Implementação de um simulador de "Timeout de API", fazendo duas requisições fake em paralelo e usando o select para pegar a resposta da mais rápida ou disparar um erro de timeout se demorar muito.
+- Contexto: Implementação de um simulador de "Timeout de API", fazendo duas requisições fake em paralelo e
+usando o select para pegar a resposta da mais rápida ou disparar um erro de timeout se demorar muito.
 */
 
 package main
