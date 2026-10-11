@@ -1,0 +1,61 @@
+---------------------------------------- condicionais switch
+
+Falha na validação: usuário sem nome (role="guest")
+Usuário válido.
+
+--- Analisando permissões de alice ---
+Acesso total: pode criar, ler, atualizar e excluir.
+Modo seguro padrão ativo.
+
+--- Analisando permissões de bob ---
+Acesso padrão: pode criar e ler seus próprios dados.
+Modo seguro padrão ativo.
+
+--- Analisando permissões de carol ---
+Acesso somente leitura de conteúdo público.
+Modo seguro padrão ativo.
+
+--- Analisando permissões de mallory ---
+Papel desconhecido ("hacker"): acesso negado.
+Modo seguro padrão ativo.
+
+=== Processamento de payloads ===
+Payload recebido: comando: reiniciar servidor
+  -> É uma string de 27 caracteres: "comando: reiniciar servidor"
+Payload recebido: 42
+  -> É um inteiro: dobro = 84
+Payload recebido: 3.14159
+  -> É um float64: arredondado = 3
+Payload recebido: [tags go compiladores]
+  -> É uma lista de strings com 3 itens
+Payload recebido: true
+  -> Tipo não suportado: bool
+Payload recebido: <nil>
+  -> Payload é nulo (nil)
+
+---------------------------------------- tratamento erros 
+
+=== Caso: Cadastro válido ===
+Usuário "Ana Kelry" cadastrado com sucesso!
+
+=== Caso: Vários campos inválidos ===
+Cadastro de "Al" rejeitado (4 erro(s)):
+>> Análises dos erros individuais retornados pelo fluxo principal:
+   mensagem: campo "nome" inválido: mínimo de 3 caracteres
+     [errors.As] erro de validação -> campo=nome motivo=mínimo de 3 caracteres
+
+   mensagem: falha ao validar e-mail "email-sem-arroba": campo "email" inválido: formato inválido
+     [errors.As] erro de validação -> campo=email motivo=formato inválido
+
+   mensagem: campo "idade" inválido: 15 fora do intervalo [18, 120]
+     [errors.As] erro de validação -> campo=idade motivo=15 fora do intervalo [18, 120]
+
+   mensagem: autenticação do cadastro falhou: token de cadastro expirado
+     [errors.Is] contém ErrCadastroExpirado -> solicite um novo token ao usuário.
+
+=== Caso: Token expirado ===
+Cadastro de "Bob Silva" rejeitado (1 erro(s)):
+>> Análises dos erros individuais retornados pelo fluxo principal:
+   mensagem: validação de token (tk-antigo): token de cadastro expirado
+     [errors.Is] contém ErrCadastroExpirado -> solicite um novo token ao usuário.
+
