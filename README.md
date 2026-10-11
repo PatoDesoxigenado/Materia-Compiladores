@@ -3,9 +3,9 @@
 Repositório da Disciplina COMPILADORES E PARADIGMAS DE PROGRAMAÇÃO - UERN Semestre 2026.2
 
 
-## Estrutura de Pastas
+ ```
 
-```
+## Estrutura de Pastas
 Matéria-Compiladores/
 ├── LICENSE
 ├── README.md
@@ -19,14 +19,16 @@ Matéria-Compiladores/
     │   └── 04_canais_select.go
     ├── Ana Kelry/
     │   ├── 05_condicionais_switch.go
-    │   └── 06_tratamento_erros.go
+    │   ├── 06_tratamento_erros.go
+    │   └── resultado.txt
     ├── Jean Vitor/
     │   ├── 07_loops_defer.go
     │   └── 08_funcoes.go
     └── Luiz Fernando/
         ├── 09_closures_lambdas.go
         └── 10_generics.go
-```
+ ``` 
+
 
 ## Conteúdo das Pastas
 
