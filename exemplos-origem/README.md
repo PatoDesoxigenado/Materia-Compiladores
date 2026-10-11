@@ -2,10 +2,10 @@
 
 Esta pasta contém os 10 arquivos de códigos-fonte de exemplo na linguagem de origem (Go), distribuídos entre os integrantes da equipe. 
 
-## 🛠️ Compilador Utilizado
+##  Compilador Utilizado
 O compilador utilizado para rodar estes exemplos é o compilador oficial da linguagem Go, conhecido como **`gc` (Go Compiler)**, que já vem embutido por padrão na *toolchain* oficial disponibilizada pelo Google.
 
-## 📥 Como Instalar o Compilador
+## Como Instalar o Compilador
 Para compilar e executar os códigos, você precisa ter a linguagem Go instalada na sua máquina.
 
 1. Acesse o site oficial: [https://go.dev/dl/](https://go.dev/dl/)
@@ -15,7 +15,7 @@ Para compilar e executar os códigos, você precisa ter a linguagem Go instalada
    ```bash```
    go version
 
-## ▶️ Como Compilar e Executar os Arquivos Fontes
+## Como Compilar e Executar os Arquivos Fontes
 
 A ferramenta de linha de comando do Go permite duas abordagens principais para rodar os exemplos desta pasta. Abra o terminal na raiz desta pasta e escolha um dos métodos abaixo:
 
