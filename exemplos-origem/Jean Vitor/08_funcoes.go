@@ -1,11 +1,3 @@
-/*
-  - Não foram usadas IAs neste exemplo.
-
-Exemplo 8: Funções (Retornos e Variádicos)
-  - Arquivo: `08_funcoes.go`
-  - Tópicos: Múltiplos retornos, retornos nomeados e parâmetros variádicos.
-  - Ideia de Implementação: Uma função "Calculadora de Estatísticas" que recebe uma quantidade infinita de notas (variádico), e retorna três valores: o total, a média e um erro (caso nenhuma nota seja enviada).
-*/
 package main
 
 import (
@@ -33,7 +25,7 @@ func média(notas []float64) float64 {
 	return resultado
 }
 
-// função com valor de retorno nomeado
+// função com valores de retorno nomeados e múltiplos
 func commandLineToList() (notas []float64, err error) {
 	commandLine := os.Args[1:]
 
