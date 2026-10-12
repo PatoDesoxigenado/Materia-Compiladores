@@ -1,0 +1,153 @@
+---------------------------------------- tipos de dados e variáveis
+
+=== EXEMPLO 1: TIPOS DE DADOS E VARIÁVEIS ===
+Sistema de Carrinho de Compras
+
+=== 1. Tipos primitivos: tipo estático, valor zero e tamanho ===
+  TIPO           VALOR                ZERO VALUE TAMANHO
+  int            42                   0          8 byte(s)
+  int8           127                  0          1 byte(s)
+  uint           42                   0          8 byte(s)
+  float64        3.14                 0          8 byte(s)
+  string         "compiladores"       ""         16 byte(s)
+  bool           true                 false      1 byte(s)
+  rune (int32)   'Ç' (199)            0          4 byte(s)
+  byte (uint8)   65 ('A')             0          1 byte(s)
+  *Produto       <nil>                <nil>      8 byte(s)
+  Observações:
+    - string ocupa 2 palavras (endereço dos dados + comprimento), não 1 byte por caractere.
+    - *Produto ocupa 1 palavra: ele guarda o endereço da struct, não a struct inteira.
+    - a letra 'Ç' é um rune (código 199) e ocupa 4 bytes, mas o texto completo "compiladores" ocupa 12 bytes.
+    - float64 é binário de precisão: 0.1+0.2 não dá 0.3 exatamente.
+      0.1 + 0.2 = 0.29999999999999998890
+      arredondado para 2 casas = 0.30
+
+=== 2. Zero values: `var x T` sempre nasce inicializado ===
+  int     -> 0
+  float64 -> 0.00
+  string  -> "" (len=0)
+  bool    -> false
+  slice   -> [] (len=0, cap=0)
+  map     -> map[] (len=0)
+  Cliente -> nome="" cidade="" newsletter=false
+  leitura em map nil: descontos["frete"] = 0.00
+  (escrever em map nil causaria panic: é preciso antes usar make)
+  após append no slice nil: [P M G] (len=3, cap=3)
+
+=== 3. Structs: literais, campos nomeados e aninhamento ===
+  Cliente: Alerrandro Martins <alerrandro@uern.br>
+  Endereço aninhado:  Rua das Acácias, 120 - Mossoró/59633-070
+  Endereço posicional: Av. Presidente Dutra, 45 - Parnamirim/59633-000
+  Assina newsletter: true
+  original tem numero 120, mas a copia tem 999
+  (structs são valores: a cópia é independente do original)
+
+=== 4. Slice: len, cap, append, copy e fatiamento ===
+  literal: [camiseta calca bone] (len=3, cap=3)
+  após append: [camiseta calca bone tenis meia] (len=5, cap=6)
+  lista[1:3] = [calca bone]
+  alterando meio[0], a lista original virou [camiseta CAMISA bone tenis meia] (array compartilhado)
+  com copy, a lista continua [camiseta CAMISA bone tenis meia] e a cópia é [jaqueta CAMISA bone tenis meia]
+  após remover o segundo item: [camiseta bone tenis meia]
+  lista[:cap] expõe o array inteiro: [camiseta bone tenis meia meia ] (len=6)
+  make([]int, 0, 4) + append: [10 20 30] (len=3, cap=4)
+
+=== 5. Escopo: pacote, função e bloco ===
+  escopo de pacote: cupomPromocional = 15%
+  escopo da função: desconto = 5%
+  dentro do bloco (sombreada): desconto = 30%
+  fora do bloco, a externa continua: desconto = 5%
+  total declarado na função: 120
+
+=== 6. O carrinho montado ===
+  Itens no carrinho: 4
+    [101] Camiseta básica  R$   49.90  (vestuario)
+    [102] Calça jeans      R$  129.50  (vestuario)
+    [104] Meia de algodão  R$   12.50  (vestuario)
+    [106] Mochila 25L      R$  199.90  (acessorios)
+  Itens fora do carrinho:
+    - Tênis urbano (sem estoque)
+    - Boné bordado (inativo)
+
+  Subtotal:  R$   391.80
+  Cupom (15%): -R$   58.77
+  Total:     R$   333.03
+
+  Agrupamento por categoria (map):
+  acessorios (1 item(ns)):
+    [106] Mochila 25L      R$  199.90  estoque: 3
+  vestuario (3 item(ns)):
+    [101] Camiseta básica  R$   49.90  estoque: 12
+    [102] Calça jeans      R$  129.50  estoque: 5
+    [104] Meia de algodão  R$   12.50  estoque: 40
+
+---------------------------------------- goroutines e waitgroup
+
+=== EXEMPLO 2: GOROUTINES E sync.WaitGroup ===
+Disparador de E-mails em Massa
+
+=== 1. O problema: disparar sem esperar ===
+  main terminou em 1.184µs sem esperar nenhuma goroutine.
+  (as goroutines que ainda estavam trabalhando foram encerradas com o processo)
+
+=== 2. Disparo com WaitGroup (todos em paralelo) ===
+  [goroutine 2] e-mail enviado!
+  [goroutine 3] e-mail enviado!
+  [goroutine 1] e-mail enviado!
+  [1/10] Thafine Jennifer   OK em 1 tentativa(s) (166ms)
+  [2/10] Ana Kelry          OK em 1 tentativa(s) (180ms)
+  [3/10] Ana Paula          OK em 1 tentativa(s) (180ms)
+  [4/10] Jean Vitor         OK em 1 tentativa(s) (186ms)
+  [5/10] Alerrandro Martins OK em 1 tentativa(s) (186ms)
+  [6/10] Empresa X          FALHOU após 1 tentativa(s): endereço inválido
+  [7/10] João Souza         OK em 1 tentativa(s) (200ms)
+  [8/10] Luiz Fernando      OK em 1 tentativa(s) (208ms)
+  [9/10] Carlos Lima        OK em 1 tentativa(s) (222ms)
+  [10/10] Maria Silva        OK em 2 tentativa(s) (415ms)
+  campanha concluída em 415ms
+
+=== 3. Disparo em lotes de 3 (concorrência limitada) ===
+  [1/10] Ana Kelry          OK em 1 tentativa(s) (179ms)
+  [2/10] Alerrandro Martins OK em 1 tentativa(s) (187ms)
+  [3/10] Jean Vitor         OK em 1 tentativa(s) (187ms)
+  [4/10] Thafine Jennifer   OK em 1 tentativa(s) (166ms)
+  [5/10] Luiz Fernando      OK em 1 tentativa(s) (208ms)
+  [6/10] Maria Silva        OK em 2 tentativa(s) (415ms)
+  [7/10] Empresa X          FALHOU após 1 tentativa(s): endereço inválido
+  [8/10] João Souza         OK em 1 tentativa(s) (201ms)
+  [9/10] Carlos Lima        OK em 1 tentativa(s) (222ms)
+  [10/10] Ana Paula          OK em 1 tentativa(s) (179ms)
+  4 lotes de até 3 concluídos em 1.004s
+
+=== 4. Sequencial x concorrente (mesmo lote) ===
+  [1/10] Thafine Jennifer   OK em 1 tentativa(s) (165ms)
+  [2/10] Ana Kelry          OK em 1 tentativa(s) (180ms)
+  [3/10] Ana Paula          OK em 1 tentativa(s) (180ms)
+  [4/10] Jean Vitor         OK em 1 tentativa(s) (186ms)
+  [5/10] Alerrandro Martins OK em 1 tentativa(s) (186ms)
+  [6/10] Empresa X          FALHOU após 1 tentativa(s): endereço inválido
+  [7/10] João Souza         OK em 1 tentativa(s) (200ms)
+  [8/10] Luiz Fernando      OK em 1 tentativa(s) (208ms)
+  [9/10] Carlos Lima        OK em 1 tentativa(s) (222ms)
+  [10/10] Maria Silva        OK em 2 tentativa(s) (416ms)
+  Sequencial:  2.134s
+  Concorrente: 416ms
+  Ganho:       5.13x mais rápido
+
+--- Relatório da campanha ---
+  Alerrandro Martins alerrandro@uern.br         OK       OK em 1 tentativa(s) (186ms)
+  Ana Kelry          ana.kelry@uern.br          OK       OK em 1 tentativa(s) (180ms)
+  Ana Paula          ana.paula@uern.br          OK       OK em 1 tentativa(s) (180ms)
+  Carlos Lima        carlos.lima@hotmail.com    OK       OK em 1 tentativa(s) (222ms)
+  Empresa X          contato.empresa.com        FALHOU   FALHOU após 1 tentativa(s): endereço inválido
+  Jean Vitor         jean.vitor@uern.br         OK       OK em 1 tentativa(s) (186ms)
+  João Souza         joao.souza@yahoo.com       OK       OK em 1 tentativa(s) (200ms)
+  Luiz Fernando      luiz.fernando@uern.br      OK       OK em 1 tentativa(s) (208ms)
+  Maria Silva        maria.silva@gmail.com      OK       OK em 2 tentativa(s) (415ms)
+  Thafine Jennifer   thafine@uern.br            OK       OK em 1 tentativa(s) (166ms)
+
+  Total de destinatários: 10
+  Enviados com sucesso:   9
+  Falhas:                 1
+  Tentativas de envio:    11
+  Sucesso na 1ª tentativa: 8

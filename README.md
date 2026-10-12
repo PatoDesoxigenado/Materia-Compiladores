@@ -10,6 +10,8 @@ Matéria-Compiladores/
 └── exemplos-origem/
     ├── README.md
     ├── Alerrandro Martins/
+    │   ├── README.md
+    │   ├── resultado.txt
     │   ├── 01_tipos_variaveis.go
     │   └── 02_goroutines_waitgroup.go
     ├── Thafine Jennifer/
@@ -20,9 +22,12 @@ Matéria-Compiladores/
     │   ├── 06_tratamento_erros.go
     │   └── resultado.txt
     ├── Jean Vitor/
+    │   ├── README.md
+    │   ├── sample.log
     │   ├── 07_loops_defer.go
     │   └── 08_funcoes.go
     └── Luiz Fernando/
+        ├── README.md
         ├── 09_closures_lambdas.go
         └── 10_generics.go
  ``` 
